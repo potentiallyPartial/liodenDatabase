@@ -19,7 +19,12 @@
 </div>
 
 <?php 
-
+include 'dbCon.php';
+$conn = OpenCon();
+echo "Connected Successfully";
+echo "$conn";
+CloseCon($conn);
+/*
 function sqlConect() {
 // seting up sql server conection
 $serverName = "dragonsDen";
@@ -43,6 +48,7 @@ if ($conn->connect_error) {
 echo "test";
 
 sqlConect();
+*/
 ?>
 
 <?php
