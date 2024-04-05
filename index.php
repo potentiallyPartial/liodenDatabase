@@ -29,7 +29,7 @@ $dbName = "lioden";
 
 //make new connection
 $conn = new mysqli($servername, $username, $password, $dbName);
-
+echo ($conn);
 // test Connection
 if ($conn->connect_error) {
     echo "nope";
