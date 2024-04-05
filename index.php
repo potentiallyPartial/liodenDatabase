@@ -5,6 +5,8 @@ $conn = OpenCon();
 echo "Connected Successfully";
 echo "$conn";
 CloseCon($conn);
+
+echo ("test");
 /*
 function sqlConect() {
 // seting up sql server conection
