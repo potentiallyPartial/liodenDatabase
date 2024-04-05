@@ -17,7 +17,9 @@
     </form>
 
 </div>
+
 <?php 
+/*
 function sqlConect() {
 // seting up sql server conection
 $serverName = "dragonsDen";
@@ -98,7 +100,7 @@ $usrType = $bse["bse_type"];
         . $breedInfo["bse_gradent"]. "rareity: " 
         . $breedInfo["bse_rareity"]. "";
     }
-
+*/
 ?>
 
 <div class="results">
