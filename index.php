@@ -22,6 +22,7 @@
     echo "Connected Successfully";
     echo "$conn";
     CloseCon($conn);
+    echo "test";
     ?>
     
 </div>
