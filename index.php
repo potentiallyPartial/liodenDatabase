@@ -32,13 +32,14 @@ $conn = new mysqli($servername, $username, $password, $dbName);
 
 // test Connection
 if ($conn->connect_error) {
+    echo "nope";
     die("Connection failed: " . $conn->connect_error);
   }
   echo "Connected successfully";
 
 }
 
-echo "test"
+echo "test";
 ?>
 
 <?php
