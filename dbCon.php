@@ -1,7 +1,7 @@
 <?php
     function OpenCon()
     {
-    $dbhost = "localhoast";
+    $dbhost = "dragonsDen";
     $dbuser = "Tiamat";
     $dbpass = "5he@ds";
     $db = "lioden";
