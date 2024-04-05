@@ -102,11 +102,12 @@ $usrType = $bse["bse_type"];
     }
 */
 ?>
-
+<!--
 <div class="results">
         <div class="rInner" id="result1">
             <p>
-                <?php 
+                <?php
+/*
                     if ($nclOutput){
                         $nclOutput;
                     } 
@@ -127,6 +128,7 @@ $usrType = $bse["bse_type"];
                     else{
                         echo "There has been an error."
                     }
+                    */
                 ?>
             </p>  
         </div>
@@ -139,7 +141,7 @@ $usrType = $bse["bse_type"];
 
 </body>
 </html>
-
+                -->
 <!--
     1) User Inputs Name of base they are looking for
     2) Sql- Select bse_id, bse_type from bases where bse_name="userinput";
