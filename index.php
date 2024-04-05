@@ -40,6 +40,8 @@ if ($conn->connect_error) {
 }
 
 echo "test";
+
+sqlConect();
 ?>
 
 <?php
