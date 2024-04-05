@@ -16,13 +16,15 @@
     <input type="submit" value="Deploy the Rats!">
     </form>
 
+<?php 
+    include 'dbCon.php';
+    $conn = OpenCon();
+    echo "Connected Successfully";
+    echo "$conn";
+    CloseCon($conn);
+    ?>
+    
 </div>
 
-<?php 
-include 'dbCon.php';
-$conn = OpenCon();
-echo "Connected Successfully";
-echo "$conn";
-CloseCon($conn);
-?>
+
 
