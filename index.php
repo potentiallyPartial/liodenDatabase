@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <header>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <h1>R.G.L</h1>
     <h4> Rat Genetics Lab </h4>
