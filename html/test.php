@@ -1,3 +1,7 @@
 <?php 
-    echo "Rats DEPLOYED!"
+   include <dbCon class="php"></dbCon>;
+
+   $conn = OpenCon();
+
+   CloseCon($conn);
 ?>
