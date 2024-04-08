@@ -5,7 +5,7 @@
 
 <?php 
 include "dbCon.php"
-$con = OpenCon();
+OpenCon();
 /*
 CloseCon($con);
 */
