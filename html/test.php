@@ -14,6 +14,8 @@ $password = "5he@ds";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password);
+
+echo "this breaks it tho \n";
 // Check connection
 if ($conn->connect_error) {
     echo "well Shit";
