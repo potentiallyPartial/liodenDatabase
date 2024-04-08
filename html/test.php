@@ -4,9 +4,11 @@
 <body>
 
 <?php 
+/*
 include "dbCon.php";
- $con = OpenCon();
- CloseCon($con);
+$con = OpenCon();
+CloseCon($con);
+*/
 ?>
 
 this is the base you input: <?php echo $_POST["base"] ?>
