@@ -5,9 +5,11 @@
     $dbuser = "Tiamat";
     $dbpass = "5he@ds";
     $db = "lioden";
-    $conn = new mysqli($dbhost, $dbuser, $dbpass,$dbname) or die("Connect failed: %s\n". $conn -> error);
-    return $conn;
+
+    // atempt to make connection
+    $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
     echo "All good";
+    return $conn;
     }
     function CloseCon($conn)
     {
