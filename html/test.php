@@ -2,11 +2,13 @@
 
 <html>
 <body>
+
 <?php 
 include "dbCon.php";
- $test = OpenCon();
- CloseCon($test);
+ $con = OpenCon();
+ CloseCon($con);
 ?>
+
 this is the base you input: <?php echo $_POST["base"] ?>
 
 </body>
