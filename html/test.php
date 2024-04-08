@@ -3,7 +3,7 @@
 <html>
 <body>
 
-this is the base you input: <?php echo $_post["base"] ?>
+this is the base you input: <?php echo $_POST["base"] ?>
 
 </body>
 </html>
