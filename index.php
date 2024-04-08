@@ -25,8 +25,10 @@ $userName = "Tiamat";
 $password = "5he@ds";
 $dbName = "lioden";
 
+if(!$mysqli->ping()) {
 //make new connection
 $conn = new mysqli($servername, $username, $password, $dbName);
+}
 
 // test Connection
 if ($conn->connect_error) {
@@ -82,20 +84,20 @@ $usrType = $bse["bse_type"];
         $appInfo = $conn->prepare("SELECT apc_name, apc_event, apc_time, apc_location, apc_cost, apc_notes FROM applicator WHERE bse_id = '$id'");
 
        $appOut = echo "You are looking at an applcator base, the applcator is called "
-        . $appInfo["apc_name"]. "It can be found in the "
-        . $appInfo["apc_event"]. "That happens during"
-        . $appInfo["apc_time"]. "The event store that you can buy it from is"
-        . $appInfo["apc_location"]. "And it will cost you"
-        . $appInfo["apc_cost"]. "If there are aditonal info It will be here: "
+        . $appInfo["apc_name"]. "\n It can be found in the "
+        . $appInfo["apc_event"]. "\n That happens during"
+        . $appInfo["apc_time"]. "\n The event store that you can buy it from is"
+        . $appInfo["apc_location"]. "\n And it will cost you"
+        . $appInfo["apc_cost"]. "\n If there are aditonal info It will be here: "
         . $appInfo["apc_notes"]." ";
     }
 
     function breedOnly($id){
         $breedInfo = $conn->prepare("SELECT bse_color, bse_shade, bse_gradent, bse_rareity FROM bases WHERE bse_id='$id'");
-        $breedOut = echo "These are all the trates you will need to have a chance to breed this Lion. Color: "
-        . $breedInfo["bse_color"]. "Shade: " 
-        . $breedInfo["bse_shade"]. "Gradent: " 
-        . $breedInfo["bse_gradent"]. "rareity: " 
+        $breedOut = echo "These are all the trates you will need to have a chance to breed this Lion.\n Color: "
+        . $breedInfo["bse_color"]. "\n Shade: " 
+        . $breedInfo["bse_shade"]. "\n Gradent: " 
+        . $breedInfo["bse_gradent"]. "\n rareity: " 
         . $breedInfo["bse_rareity"]. "";
     }
 
