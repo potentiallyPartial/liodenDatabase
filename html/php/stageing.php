@@ -11,13 +11,16 @@
     <p class="cent">Welcome to the R.G.L!<br> We are a group of escaped lab rats who are now using what we learned for <br> <i>EVI-</i> <br>
     Good, we use what we learned for good. <br> Just tell us what base you are looking for and we can find out what you need to get there.</p>
     
-<form action="index.html" method="POST" class="cent">
+<form action="index.php" method="POST" class="cent">
     <input type="text" name="name" placeholder="Enter Base name" list="bases"><br>
     <input type="submit" value="Deploy the Rats!">
     </form>
 
 </div>
-<?php 
+
+
+echo ("test");
+/*
 function sqlConect() {
 // seting up sql server conection
 $serverName = "dragonsDen";
@@ -32,12 +35,21 @@ $conn = new mysqli($servername, $username, $password, $dbName);
 
 // test Connection
 if ($conn->connect_error) {
+    echo "nope";
     die("Connection failed: " . $conn->connect_error);
   }
   echo "Connected successfully";
 
+  echo("connect Run");
 }
 
+echo "test";
+
+sqlConect();
+*/
+
+<?php
+/*
 // capture User Input
 $usrInput = $_POST["name"];
 
@@ -100,13 +112,14 @@ $usrType = $bse["bse_type"];
         . $breedInfo["bse_gradent"]. "\n rareity: " 
         . $breedInfo["bse_rareity"]. "";
     }
-
+*/
 ?>
-
+<!--
 <div class="results">
         <div class="rInner" id="result1">
             <p>
-                <?php 
+                <?php
+/*
                     if ($nclOutput){
                         $nclOutput;
                     } 
@@ -127,6 +140,7 @@ $usrType = $bse["bse_type"];
                     else{
                         echo "There has been an error."
                     }
+                    */
                 ?>
             </p>  
         </div>
@@ -139,7 +153,7 @@ $usrType = $bse["bse_type"];
 
 </body>
 </html>
-
+                -->
 <!--
     1) User Inputs Name of base they are looking for
     2) Sql- Select bse_id, bse_type from bases where bse_name="userinput";
