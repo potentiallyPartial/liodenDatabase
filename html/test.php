@@ -4,8 +4,8 @@
 <body>
 
 <?php 
+include "dbCon.php"
 /*
-include "dbCon.php";
 $con = OpenCon();
 CloseCon($con);
 */
