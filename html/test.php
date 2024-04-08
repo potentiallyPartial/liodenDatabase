@@ -3,6 +3,8 @@
 <html>
 <body>
 
+this is the base you input: <?php echo $_POST["base"] ?>
+
 <?php 
 $servername = "dragonsDen";
 $username = "Tiamat";
@@ -17,8 +19,6 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully";
 ?>
-
-this is the base you input: <?php echo $_POST["base"] ?>
 
 </body>
 </html>
