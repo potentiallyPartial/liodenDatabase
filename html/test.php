@@ -16,7 +16,13 @@ if ($mysqli -> connect_errno) {
 else{
   echo "connected";
 }
+
+$usrInput = $_POST["base"];
+$bseType
+
 ?> 
 
+the base you submited is: <?php echo "$usrInput" ?> <br>
+this base is a: <?php echo "$bseType" ?>
 </body>
 </html>
