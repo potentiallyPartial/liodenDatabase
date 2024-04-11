@@ -4,19 +4,18 @@
 <body>
 
 <?php
-echo "is this printing?"
-$servername = "dragonsDen";
-$username = "Tiamat";
-$password = "5he@ds";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password);
+$mysqli = new mysqli("localhost","Tiamat","5he@ds","lioden");
 
 // Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+if ($mysqli -> connect_errno) {
+  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+  exit();
 }
-echo "Connected successfully";
+
+else{
+  echo "connected";
+}
 ?> 
 
 </body>
