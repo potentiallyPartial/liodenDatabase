@@ -16,14 +16,17 @@ if ($mysqli -> connect_errno) {
 else{
   echo "connected";
 }
+?>
+
+<?php
 
 $usrInput = $_POST["base"];
 
 
-$stmt = $mysqli->prepare("Select bse_type from bases where bse_name='?';");
-$stmt->bind_param("s", $usrInput);
+//$stmt = $mysqli->prepare("Select bse_type from bases where bse_name='?';");
+//$stmt->bind_param("s", $usrInput);
 
-$bseType = $stmt->execute();
+//$bseType = $stmt->execute();
 
 ?> 
 
