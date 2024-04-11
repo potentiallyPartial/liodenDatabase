@@ -3,26 +3,20 @@
 <html>
 <body>
 
-this is the base you input: <?php echo $_POST["base"] ?>
-
-<?php 
-echo "Is this even working? \n";
-
-$servername = "dragonsDen";
-$username = "Tiamat";
-$password = "5he@ds";
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password);
 
-echo "this breaks it tho \n";
 // Check connection
 if ($conn->connect_error) {
-    echo "well Shit";
   die("Connection failed: " . $conn->connect_error);
 }
 echo "Connected successfully";
-?>
+?> 
 
 </body>
 </html>
