@@ -11,11 +11,21 @@
         <p class="cent">Welcome to the R.G.L!<br> We are a group of escaped lab rats who are now using what we learned for <br> <i>EVI-</i> <br>
         Good, we use what we learned for good. <br> Just tell us what base you are looking for and we can find out what you need to get there.</p>
     
-        <form action="test.php" method="POST" class="cent">
+        <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>"  class="cent">
         <input type="text" name="base" placeholder="Enter Base name" list="bases"><br>
         <input type="submit" value="Deploy the Rats!">
         </form>
+
+        <?php
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            
+            $base = $_POST["base"];
+
+            echo "your base is: $base !";
+        }
     
+        ?>
     </div>
 </body>
 </html>
