@@ -4,6 +4,7 @@
 <body>
 
 <?php
+echo "is this printing?"
 $servername = "dragonsDen";
 $username = "Tiamat";
 $password = "5he@ds";
