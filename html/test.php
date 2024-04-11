@@ -22,8 +22,7 @@ else{
 
 $usrInput = $_POST["base"];
 
-
-//$stmt = $mysqli->prepare("Select bse_type from bases where bse_name='?';");
+$stmt = $mysqli->prepare("Select bse_type from bases where bse_name='?';");
 //$stmt->bind_param("s", $usrInput);
 
 //$bseType = $stmt->execute();
