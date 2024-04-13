@@ -31,7 +31,7 @@ $stmt->bind_param("s", $usrInput);
  $stmt->bind_result($bseId, $bseType);
 
  $stmt->fetch();
-
+echo "$bseType";
  // switch for handling diffrent base Types
 
 switch ($bseType){
