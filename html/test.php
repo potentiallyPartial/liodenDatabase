@@ -34,6 +34,7 @@ $stmt->bind_param("s", $usrInput);
 
  // switch for handling diffrent base Types
 echo "$usrInput";
+/*
 switch ($usrInput){
   case Custom:
     echo "Your base: $usrInput is a custom base.\n";
@@ -63,6 +64,7 @@ switch ($usrInput){
   default:
     echo "There is a un caught statment in the switch statment";
 }
+*/
  //close conection after processing
  //
 ?> 
