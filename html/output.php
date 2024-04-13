@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 
 <html>
+<header>
+  <link rel="stylesheet" href="css/output.css">
+</header>
 <body>
 
 <?php
