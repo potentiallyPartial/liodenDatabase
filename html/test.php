@@ -4,6 +4,7 @@
 <body>
 
 <?php
+include 'functions.php';
 // make conection with my sql server
 $conn = new mysqli("localhost","Tiamat","5he@ds","lioden");
 
@@ -14,7 +15,7 @@ if ($conn -> connect_errno) {
 }
 
 else{
-  echo "connected";
+  //echo "connected";
 }
 ?>
 
@@ -33,19 +34,31 @@ $stmt->bind_param("s", $usrInput);
  $stmt->fetch();
 
  // switch for handling diffrent base Types
- /*
+
 switch ($usrInput){
   case Custom:
+    Custom($bseId, $usrInput);
     break;
+
   case Breed Only:
+    BreedOnly($bseId, $usrInput);
     break;
+
   case Combo:
+    Combo($bseId, $usrInput);
     break;
+
   case NCL:
+    NCL($bseId, $usrInput);
     break;
+
+  case Applicator:
+    Applicator($bseId, $usrInput);
+    break;
+
   default:
+    Error();
 }
-*/
 
  //close conection after processing
  //
