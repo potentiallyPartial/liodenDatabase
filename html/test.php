@@ -4,35 +4,55 @@
 <body>
 
 <?php
-
-$mysqli = new mysqli("localhost","Tiamat","5he@ds","lioden");
+// make conection with my sql server
+$conn = new mysqli("localhost","Tiamat","5he@ds","lioden");
 
 // Check connection
-if ($mysqli -> connect_errno) {
-  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
+if ($conn -> connect_errno) {
+  echo "Failed to connect to MySQL: " . $conn -> connect_error;
   exit();
 }
 
-else{
+/*else{
   echo "connected";
-}
+}*/
 ?>
 
 <?php
-
+// get user input from form in index.php
 $usrInput = $_POST["base"];
 
-$stmt = $mysqli->prepare("Select bse_type from bases where bse_name=?");
+//prepare statment to get bse id / type
+$stmt = $conn->prepare("Select bse_id, bse_type from bases where bse_name=?");
 $stmt->bind_param("s", $usrInput);
 
+//run the statment / bind vars / get vars
  $stmt->execute();
- $stmt->bind_result($bseType);
+ $stmt->bind_result($bseId, $bseType);
 
  $stmt->fetch();
 
-?> 
+ // switch for handling diffrent base Types
+ /*
+switch ($usrInput){
+  case Custom:
+    break;
+  case Breed Only:
+    break;
+  case Combo:
+    break;
+  case NCL:
+    break;
+  default:
+}
+*/
 
-the base you submited is: <?php echo "$usrInput" ?> <br>
-this base is a: <?php echo "$bseType" ?>
+ //close conection after processing
+ mysqli_close();
+?> 
+<!-- echo results from statments -->
+the base you submited is: <?php echo "$usrInput"; ?> <br>
+this base is a: <?php echo "$bseType"; ?>
+and it's ID is <?php echo "$bseId"; ?>
 </body>
 </html>
