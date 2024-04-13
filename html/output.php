@@ -63,7 +63,7 @@ elseif ($bseType == "Applicator"){
   echo "Dev: the Id for the base is $bseId\n";
 }
 else{
-  echo "There is a un caught statment in the switch statment";
+  echo "You either provided a base that does not exist or entred a blank feild.";
 }
 ?> 
 <!-- echo results from statments -->
