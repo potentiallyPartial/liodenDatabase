@@ -35,6 +35,7 @@ echo "$bseType";
  // switch for handling diffrent base Types
 ?>
 <?php
+/*
 switch ($bseType){
   case Custom:
     echo "Your base: $usrInput is a custom base.\n";
@@ -64,6 +65,7 @@ switch ($bseType){
   default:
     echo "There is a un caught statment in the switch statment";
 }
+*/
  //close conection after processing
  //
 ?> 
