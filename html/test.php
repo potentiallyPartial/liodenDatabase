@@ -68,6 +68,10 @@ else{
 
 </P>
 
+<form action="index.php"  class="cent">
+<input type="submit" value="Ask about another Base.">
+</form>
+
 <?php mysqli_close($conn); ?>
 </body>
 </html>

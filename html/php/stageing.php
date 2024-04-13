@@ -163,3 +163,7 @@ $usrType = $bse["bse_type"];
     6) if applcator: SQL- Select apc_name, apc_time, apc_event, apc_cost from Aplcator where bse_id="user selected ID"
     7) if Combo: SQL- Select from combo table, use Id's to return names from Base table.
 -->
+
+the base you submited is: <?php echo "$usrInput"; ?> <br>
+this base is a: <?php echo "$bseType"; ?> <br>
+and it's ID is <?php echo "$bseId"; ?>
