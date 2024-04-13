@@ -34,7 +34,7 @@ $stmt->bind_param("s", $usrInput);
  $stmt->fetch();
 
  // switch for handling diffrent base Types
-
+/*
 switch ($usrInput){
   case Custom:
     Custom($bseId, $usrInput);
@@ -59,7 +59,7 @@ switch ($usrInput){
   default:
     Error();
 }
-
+*/
  //close conection after processing
  //
 ?> 
