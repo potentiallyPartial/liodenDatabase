@@ -15,10 +15,11 @@ p{
 .contaner{
     margin: auto;
     width: 50%;
+    height: 100%;
     padding: 10px;
 
     background-color: grey;
-    border-radius: 15%;
+    border-radius: 25px;
 }
 
 .cent{
