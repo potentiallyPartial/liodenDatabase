@@ -38,27 +38,27 @@ $stmt->bind_param("s", $usrInput);
 ?>
 <?php
 if ($bseType == "Custom"){
-  echo "Your base: $usrInput is a custom base. <br> Dev: the Id for the base is $bseId";
+  $output = "Your base: $usrInput is a custom base. <br> Dev: the Id for the base is $bseId";
 }
 elseif ($bseType == "Breed Only"){
-  echo "Your base: $usrInput is a BreedOnly base. <br> Dev: the Id for the base is $bseId";
+  $output = "Your base: $usrInput is a BreedOnly base. <br> Dev: the Id for the base is $bseId";
 }
 elseif ($bseType == "Combo"){
-  echo "Your base: $usrInput is a Combo base. <br> Dev: the Id for the base is $bseId";
+  $output = "Your base: $usrInput is a Combo base. <br> Dev: the Id for the base is $bseId";
 }
 elseif ($bseType == "NCL"){
-  echo " $usrInput is a NCL they can be found in explore. <br> Dev: the Id for the base is $bseId";
+  $output = " $usrInput is a NCL they can be found in explore. <br> Dev: the Id for the base is $bseId";
 }
 elseif ($bseType == "Applicator"){
- echo "Your base: $usrInput is a Applicator base. <br> Dev: the Id for the base is $bseId";
+  $output = "Your base: $usrInput is a Applicator base. <br> Dev: the Id for the base is $bseId";
 }
 else{
-  echo "You either provided a base that does not exist or entred a blank feild.";
+  $output = "You either provided a base that does not exist or entred a blank feild.";
 }
 ?> 
 <!-- echo results from statments -->
 <p>
-  $output
+  <?php echo "$output"; ?>
 </P>
 
 <form action="index.php"  class="cent">
