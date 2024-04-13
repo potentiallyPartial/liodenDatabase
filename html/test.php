@@ -3,6 +3,36 @@
 <html>
 <body>
 
+<?php
+function NCL(){
+    echo " $usrInput is a NCL they can be found in explore\n";
+    echo "Dev: the Id for the base is $bseId\n";
+}
+
+function Custom(){
+    echo "Your base: $usrInput is a custom base.\n";
+    echo "Dev: the Id for the base is $bseId\n";
+}
+
+function BreedOnly(){
+    echo "Your base: $usrInput is a BreedOnly base.\n";
+    echo "Dev: the Id for the base is $bseId\n";
+}
+
+function Combo(){
+    echo "Your base: $usrInput is a Combo base.\n";
+    echo "Dev: the Id for the base is $bseId\n";
+}
+
+function Applicator(){
+    echo "Your base: $usrInput is a Applicator base.\n";
+    echo "Dev: the Id for the base is $bseId\n";
+}
+
+function Error(){
+    echo "There is a un caught statment in the switch statment";
+}
+?>
 
 <?php
 // make conection with my sql server
@@ -37,29 +67,28 @@ $stmt->bind_param("s", $usrInput);
 
 switch ($usrInput){
   case Custom:
-    Custom($bseId, $usrInput);
+    Custom();
     break;
 
   case Breed Only:
-    BreedOnly($bseId, $usrInput);
+    BreedOnly();
     break;
 
   case Combo:
-    Combo($bseId, $usrInput);
+    Combo();
     break;
 
   case NCL:
-    NCL($bseId, $usrInput);
+    NCL();
     break;
 
   case Applicator:
-    Applicator($bseId, $usrInput);
+    Applicator();
     break;
 
   default:
     Error();
 }
-*/
  //close conection after processing
  //
 ?> 
