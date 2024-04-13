@@ -31,8 +31,7 @@ $stmt->bind_param("s", $usrInput);
  $stmt->bind_result($bseId, $bseType);
 
  $stmt->fetch();
-echo "$bseType";
- // switch for handling diffrent base Types
+ // ifElse for handling diffrent base Types
 ?>
 <?php
 if ($bseType == "Custom"){
@@ -61,9 +60,7 @@ else{
 ?> 
 <!-- echo results from statments -->
 <p>
-the base you submited is: <?php echo "$usrInput"; ?> <br>
-this base is a: <?php echo "$bseType"; ?> <br>
-and it's ID is <?php echo "$bseId"; ?>
+  
 </P>
 
 <?php mysqli_close($conn); ?>
