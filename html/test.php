@@ -13,9 +13,9 @@ if ($conn -> connect_errno) {
   exit();
 }
 
-/*else{
+else{
   echo "connected";
-}*/
+}
 ?>
 
 <?php
@@ -48,7 +48,7 @@ switch ($usrInput){
 */
 
  //close conection after processing
- mysqli_close();
+ //mysqli_close();
 ?> 
 <!-- echo results from statments -->
 the base you submited is: <?php echo "$usrInput"; ?> <br>
