@@ -36,22 +36,27 @@ $stmt->bind_param("s", $usrInput);
 <?php
 if ($bseType == "Custom"){
   echo "Your base: $usrInput is a custom base.\n";
+  echo "<br>";
   echo "Dev: the Id for the base is $bseId\n";
 }
 elseif ($bseType == "Breed Only"){
   echo "Your base: $usrInput is a BreedOnly base.\n";
+  echo "<br>";
   echo "Dev: the Id for the base is $bseId\n";
 }
 elseif ($bseType == "Combo"){
   echo "Your base: $usrInput is a Combo base.\n";
+  echo "<br>";
   echo "Dev: the Id for the base is $bseId\n";
 }
 elseif ($bseType == "NCL"){
   echo " $usrInput is a NCL they can be found in explore\n";
+  echo "<br>";
   echo "Dev: the Id for the base is $bseId\n";
 }
 elseif ($bseType == "Applicator"){
   echo "Your base: $usrInput is a Applicator base.\n";
+  echo "<br>";
   echo "Dev: the Id for the base is $bseId\n";
 }
 else{
@@ -60,7 +65,7 @@ else{
 ?> 
 <!-- echo results from statments -->
 <p>
-  
+
 </P>
 
 <?php mysqli_close($conn); ?>
