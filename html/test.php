@@ -48,11 +48,13 @@ switch ($usrInput){
 */
 
  //close conection after processing
- //mysqli_close();
+ //
 ?> 
 <!-- echo results from statments -->
 the base you submited is: <?php echo "$usrInput"; ?> <br>
-this base is a: <?php echo "$bseType"; ?>
+this base is a: <?php echo "$bseType"; ?> <br>
 and it's ID is <?php echo "$bseId"; ?>
+
+<?php mysqli_close($conn); ?>
 </body>
 </html>
