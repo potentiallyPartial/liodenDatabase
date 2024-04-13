@@ -33,7 +33,7 @@ $stmt->bind_param("s", $usrInput);
  $stmt->fetch();
 
  // switch for handling diffrent base Types
-
+echo "$usrInput";
 switch ($usrInput){
   case Custom:
     echo "Your base: $usrInput is a custom base.\n";
