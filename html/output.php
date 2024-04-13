@@ -56,6 +56,9 @@ else{
   $output = "You either provided a base that does not exist or entred a blank feild.";
 }
 ?> 
+
+<div class="contaner">
+  <h1> The Results Are In! </h1>
 <!-- echo results from statments -->
 <p>
   <?php echo "$output"; ?>
@@ -64,6 +67,8 @@ else{
 <form action="index.php"  class="cent">
 <input type="submit" value="Ask about another Base.">
 </form>
+
+</div>
 
 <?php mysqli_close($conn); ?>
 </body>
