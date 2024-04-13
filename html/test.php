@@ -35,44 +35,36 @@ echo "$bseType";
  // switch for handling diffrent base Types
 ?>
 <?php
-/*
-switch ($bseType){
-  case Custom:
-    echo "Your base: $usrInput is a custom base.\n";
-    echo "Dev: the Id for the base is $bseId\n";
-    break;
-
-  case Breed Only:
-    echo "Your base: $usrInput is a BreedOnly base.\n";
-    echo "Dev: the Id for the base is $bseId\n";
-    break;
-
-  case Combo:
-    echo "Your base: $usrInput is a Combo base.\n";
-    echo "Dev: the Id for the base is $bseId\n";
-    break;
-
-  case NCL:
-    echo " $usrInput is a NCL they can be found in explore\n";
-    echo "Dev: the Id for the base is $bseId\n";
-    break;
-
-  case Applicator:
-    echo "Your base: $usrInput is a Applicator base.\n";
-    echo "Dev: the Id for the base is $bseId\n";
-    break;
-
-  default:
-    echo "There is a un caught statment in the switch statment";
+if ($bseType == "Custom"){
+  echo "Your base: $usrInput is a custom base.\n";
+  echo "Dev: the Id for the base is $bseId\n";
 }
-*/
- //close conection after processing
- //
+elseif ($bseType == "Breed Only"){
+  echo "Your base: $usrInput is a BreedOnly base.\n";
+  echo "Dev: the Id for the base is $bseId\n";
+}
+elseif ($bseType == "Combo"){
+  echo "Your base: $usrInput is a Combo base.\n";
+  echo "Dev: the Id for the base is $bseId\n";
+}
+elseif ($bseType == "NCL"){
+  echo " $usrInput is a NCL they can be found in explore\n";
+  echo "Dev: the Id for the base is $bseId\n";
+}
+elseif ($bseType == "Applicator"){
+  echo "Your base: $usrInput is a Applicator base.\n";
+  echo "Dev: the Id for the base is $bseId\n";
+}
+else{
+  echo "There is a un caught statment in the switch statment";
+}
 ?> 
 <!-- echo results from statments -->
+<p>
 the base you submited is: <?php echo "$usrInput"; ?> <br>
 this base is a: <?php echo "$bseType"; ?> <br>
 and it's ID is <?php echo "$bseId"; ?>
+</P>
 
 <?php mysqli_close($conn); ?>
 </body>
