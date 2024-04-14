@@ -52,7 +52,7 @@ elseif ($bseType == "NCL"){
 elseif ($bseType == "Applicator"){
 
   $stmt = $conn->prepare("Select apc_name, apc_event, apc_time, apc_location, apc_cost, apc_notes from applicator where bse_id=?");
-  $stmt->bind_param("i", $bseId);
+  $stmt->bind_param("s", $bseId);
 
   $stmt->execute();
   $stmt->bind_result($apcName, $apcEvent, $apcTime, $apcLocation, $apcCost, $apcNotes);
