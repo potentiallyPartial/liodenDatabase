@@ -50,15 +50,16 @@ elseif ($bseType == "NCL"){
   $output = " $usrInput is a NCL they can be found in explore. <br> Dev: the Id for the base is $bseId";
 }
 elseif ($bseType == "Applicator"){
-
+  $tester = 1;
   $stmt = $conn->prepare("Select apc_name, apc_event, apc_time, apc_location, apc_cost, apc_notes from applicator where bse_id=?");
   $stmt->bind_param("i", (int)$bseId);
-
+  $tester = 2;
   $stmt->execute();
+  $tester = 3;
   $stmt->bind_result($apcName, $apcEvent, $apcTime, $apcLocation, $apcCost, $apcNotes);
-
+  $tester = 4;
   $stmt->fetch();
-
+  $tester = 5;
   $output = "
   $usrInput is an Applcator Base. <br>
   It can be purchesed during the $apcEvent that hapens during the month of $apcTime. <br>
@@ -77,6 +78,7 @@ else{
   <h1> The Results Are In! </h1>
 <!-- echo results from statments -->
 <p>
+  <?php echo "$tester"; ?>
   <?php echo "$output"; ?>
 </P>
 
