@@ -51,15 +51,14 @@ elseif ($bseType == "NCL"){
 }
 elseif ($bseType == "Applicator"){
 
-  $stmt = $conn->prepare("Select apc_name, apc_event, apc_time, apc_location, apc_cost, apc_notes from applicator where bse_id=?");
-  $stmt->bind_param("i", (int)$bseId);
-  echo "$stmt";
-  /*
-  $stmt->execute();
+  $appSt = $conn->prepare("Select apc_name, apc_event, apc_time, apc_location, apc_cost, apc_notes from applicator where bse_id=?");
+  $appSt->bind_param("i", $bseId);
+  
+  $appSt->execute();
 
-  $stmt->bind_result($apcName, $apcEvent, $apcTime, $apcLocation, $apcCost, $apcNotes);
+  $appSt->bind_result($apcName, $apcEvent, $apcTime, $apcLocation, $apcCost, $apcNotes);
 
-  $stmt->fetch();
+  $appSt->fetch();
 
   $output = "
   $usrInput is an Applcator Base. <br>
@@ -68,7 +67,7 @@ elseif ($bseType == "Applicator"){
   The cost will be: $apcCost.<br>
   Aditonal notes: $apcNotes
   ";
-  */
+  
 }
 else{
   $output = "You either provided a base that does not exist or entred a blank feild.";
@@ -79,7 +78,6 @@ else{
   <h1> The Results Are In! </h1>
 <!-- echo results from statments -->
 <p>
-  <?php echo "$tester"; ?>
   <?php echo "$output"; ?>
 </P>
 
