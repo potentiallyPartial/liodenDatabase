@@ -50,6 +50,14 @@ elseif ($bseType == "NCL"){
   $output = " $usrInput is a NCL they can be found in explore. <br> Dev: the Id for the base is $bseId";
 }
 elseif ($bseType == "Applicator"){
+
+  $stmt = $conn->prepare("Select apc_name, apc_event, apc_time, apc_location, apc_cost, apc_notes from applicator where bse_id=?");
+  $stmt->bind_param("i", $bseId);
+
+  $stmt->execute();
+  $stmt->bind_result($apcName, $apcEvent, $apcTime, $apcLocation, $apc_cost, $apcNotes);
+  $stmt->fetch();
+
   $output = "Your base: $usrInput is a Applicator base. <br> Dev: the Id for the base is $bseId";
 }
 else{
