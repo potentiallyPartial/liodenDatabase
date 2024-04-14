@@ -79,6 +79,7 @@ else{
 <!-- echo results from statments -->
 <p>
   <?php echo "$output"; ?>
+  <?php echo gettype($bseId); ?>
 </P>
 
 <form action="index.php"  class="cent">
