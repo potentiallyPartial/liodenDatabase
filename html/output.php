@@ -50,16 +50,17 @@ elseif ($bseType == "NCL"){
   $output = " $usrInput is a NCL they can be found in explore. <br> Dev: the Id for the base is $bseId";
 }
 elseif ($bseType == "Applicator"){
-  $tester = 1;
+
   $stmt = $conn->prepare("Select apc_name, apc_event, apc_time, apc_location, apc_cost, apc_notes from applicator where bse_id=?");
   $stmt->bind_param("i", (int)$bseId);
-  $tester = 2;
+  echo "$stmt";
+  /*
   $stmt->execute();
-  $tester = 3;
+
   $stmt->bind_result($apcName, $apcEvent, $apcTime, $apcLocation, $apcCost, $apcNotes);
-  $tester = 4;
+
   $stmt->fetch();
-  $tester = 5;
+
   $output = "
   $usrInput is an Applcator Base. <br>
   It can be purchesed during the $apcEvent that hapens during the month of $apcTime. <br>
@@ -67,7 +68,7 @@ elseif ($bseType == "Applicator"){
   The cost will be: $apcCost.<br>
   Aditonal notes: $apcNotes
   ";
-  
+  */
 }
 else{
   $output = "You either provided a base that does not exist or entred a blank feild.";
