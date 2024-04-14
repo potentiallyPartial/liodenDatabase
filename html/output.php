@@ -55,10 +55,16 @@ elseif ($bseType == "Applicator"){
   $stmt->bind_param("i", $bseId);
 
   $stmt->execute();
-  $stmt->bind_result($apcName, $apcEvent, $apcTime, $apcLocation, $apc_cost, $apcNotes);
+  $stmt->bind_result($apcName, $apcEvent, $apcTime, $apcLocation, $apcCost, $apcNotes);
   $stmt->fetch();
 
-  $output = "Your base: $usrInput is a Applicator base. <br> Dev: the Id for the base is $bseId";
+  $output = "
+  $usrInput is an Applcator Base. <br>
+  It can be purchesed during the $apcEvent that hapens during the month of $apcTime. <br>
+  You can get the base from $apcLocation. <br>
+  The cost will be: $apcCost.<br>
+  Aditonal notes: $apcNotes
+  ";
 }
 else{
   $output = "You either provided a base that does not exist or entred a blank feild.";
