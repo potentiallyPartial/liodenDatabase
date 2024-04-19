@@ -60,12 +60,13 @@ elseif ($bseType == "Breed Only"){
   $breedSt->fetch();
 
   $breedSt->close();
-
+/*
   if ($bseRareity == "C") {$bseRareity = "Common";}
   elseif ($bseRareity == "U") {$bseRareity = "Uncommon";}
   elseif ($bseRareity == "R") {$bseRareity = "Rare";}
   elseif ($bseRareity == "S") {$bseRareity = "Special";}
-  else {$bseRareity == "Error in if else."}
+  else {$bseRareity == "Error in if else."}\
+  */
 
   $output = "
   $usrInput is an Breed Only Base. <br>
