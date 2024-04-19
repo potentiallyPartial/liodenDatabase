@@ -44,6 +44,7 @@ $stmt->bind_param("s", $usrInput);
 ?>
 
 <?php
+error_reporting(E_ALL);
  // ifElse for handling diffrent base Types
 if ($bseType == "Custom"){
   $output = "Your base: $usrInput is a custom base. <br> Dev: the Id for the base is $bseId";
