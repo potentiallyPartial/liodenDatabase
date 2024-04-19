@@ -7,6 +7,9 @@
 <body>
 
 <?php
+// turn on error reporting
+error_reporting(E_ALL);
+
 // make conection with my sql server
 $conn = new mysqli("localhost","Tiamat","5he@ds","lioden");
 
@@ -34,9 +37,14 @@ $stmt->bind_param("s", $usrInput);
  $stmt->bind_result($bseId, $bseType);
 
  $stmt->fetch();
- // ifElse for handling diffrent base Types
+
+ // close the first statment
+ $stmt->close();
+
 ?>
+
 <?php
+ // ifElse for handling diffrent base Types
 if ($bseType == "Custom"){
   $output = "Your base: $usrInput is a custom base. <br> Dev: the Id for the base is $bseId";
 }
@@ -87,7 +95,5 @@ else{
 </form>
 
 </div>
-
-<?php mysqli_close($conn); ?>
 </body>
 </html>
