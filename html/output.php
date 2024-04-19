@@ -61,11 +61,11 @@ elseif ($bseType == "Breed Only"){
 
   $breedSt->close();
 /*
-  if ($bseRareity == "C") {$bseRareity = "Common";}
-  elseif ($bseRareity == "U") {$bseRareity = "Uncommon";}
-  elseif ($bseRareity == "R") {$bseRareity = "Rare";}
-  elseif ($bseRareity == "S") {$bseRareity = "Special";}
-  else {$bseRareity == "Error in if else."}\
+  if ($bseRareity == "C") {$Rareity = "Common";}
+  elseif ($bseRareity == "U") {$Rareity = "Uncommon";}
+  elseif ($bseRareity == "R") {$Rareity = "Rare";}
+  elseif ($bseRareity == "S") {$Rareity = "Special";}
+  else {$Rareity == "Error in if else."}\
   */
 
   $output = "
@@ -74,7 +74,7 @@ elseif ($bseType == "Breed Only"){
   Color = $bseColor. <br>
   Shade = $bseShade. <br>
   Gradent = $bseGradent. <br>
-  Rareity = $bseRareity. <br>
+  Rareity = $Rareity. <br>
 
   The two lions you breed need to have these components between them for a chance to get this base.
   ";
