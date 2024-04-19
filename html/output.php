@@ -61,12 +61,13 @@ elseif ($bseType == "Breed Only"){
 
   $breedSt->close();
 
+  /*
   if ($bseRareity == "C") {$Rareity = "Common";}
   elseif ($bseRareity == "U") {$Rareity = "Uncommon";}
   elseif ($bseRareity == "R") {$Rareity = "Rare";}
   elseif ($bseRareity == "S") {$Rareity = "Special";}
   else {$Rareity == "Error in if else."}\
-
+*/
 
   $output = "
   $usrInput is an Breed Only Base. <br>
@@ -81,7 +82,75 @@ elseif ($bseType == "Breed Only"){
 
 }
 elseif ($bseType == "Combo"){
-  $output = "Your base: $usrInput is a Combo base. <br> Dev: the Id for the base is $bseId";
+// statment for geting first gorup of posable perents
+  $comboSt = $conn->prepare("Select cmb_1-1, cmb_1-2, cmb_1-3, cmb_1-4, cmb_1-5, cmb_1-6, cmb_1-7 from combo where bse_id=?");
+  $comboSt->bind_param("i", $bseId);
+
+  $comboSt->execute();
+
+  $result = $comboSt->get_result();
+  $data = $result->fetch_all(MYSQLI_ASSOC);
+
+  $g1Out = "";
+// loop to add them to g1Out
+  foreach ($data as &$group1) {
+    if ($group1) {
+        $g1Out .= $group1;
+        $g1Out .= ", ";
+    }
+}
+/*
+  $comboSt->bind_result($cmd11, $cmd12, $cmd13, $cmd14, $cmd15, $cmd16, $cmd17);
+  $comboSt->fetch();
+*/
+  $comboSt->close();
+
+  // statment for geting second set of parents
+  $comboSt = $conn->prepare("Select cmb_2-1, cmb_2-2, cmb_2-3, cmb_2-4, cmb_2-5, cmb_2-6, cmb_2-7 from combo where bse_id=?");
+  $comboSt->bind_param("i", $bseId);
+
+  $comboSt->execute();
+
+  $comboSt->bind_result($cmd21, $cmd22, $cmd23, $cmd24, $cmd25, $cmd26, $cmd27);
+  $comboSt->fetch();
+
+  $result = $comboSt->get_result();
+  $data = $result->fetch_all(MYSQLI_ASSOC);
+
+  $g2Out = "";
+// loop for adding results into g2Out
+  foreach ($data as &$group2) {
+    if ($group2) {
+        $g2Out .= $group2;
+        $g2Out .= ", ";
+    }
+}
+
+  $comboSt->close();
+
+// statment for geting conditions
+  $comboSt = $conn->prepare("Select cmd_cond from combo where bse_id=?");
+  $comboSt->bind_param("i", $bseId);
+
+  $comboSt->execute();
+
+  $comboSt->bind_result($cmdCond);
+  $comboSt->fetch();
+
+  $comboSt->close();
+
+  //formating output
+
+ $divider = "<br> Group Two: <br>"
+
+ $endCap = "<br> Some combos can only be done when certan condions are met. If this base has conditoins they will show up here: <br> $cmdCond"
+
+  $output = "$usrInput is a Combo base you need to breed a lion with a base from group one with a lion form group 2 to get this base. <br>Group One Lions: <br>"
+
+  $output .= $g1Out;
+  $output .= $divider;
+  $output .= $g2Out;
+  $output .= $endCap;
 }
 elseif ($bseType == "NCL"){
   $output = " $usrInput is a NCL they can be found in explore. <br> Dev: the Id for the base is $bseId";
