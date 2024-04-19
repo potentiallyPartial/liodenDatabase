@@ -60,6 +60,25 @@ elseif ($bseType == "Breed Only"){
 
   $breedSt->close();
 
+  switch ($bseRareity){
+
+    case C:
+      $bseRareity = "Common";
+      break;
+    case U:
+      $bseRareity = "Uncommon";
+      break;
+    case R:
+      $bseRareity = "Rare";
+      break;
+    case S:
+      $bseRareity = "Special";
+      break;
+    default:
+      $bseRareity = "There is an error in the switch statment."
+
+  }
+
   $output = "
   $usrInput is an Breed Only Base. <br>
   The components of this base are: <br>
@@ -68,7 +87,7 @@ elseif ($bseType == "Breed Only"){
   Gradent = $bseGradent. <br>
   Rareity = $bseRareity. <br>
 
-  The two lions you breed neet to have these components between them for a chance to get this base.
+  The two lions you breed need to have these components between them for a chance to get this base.
   ";
 
 }
