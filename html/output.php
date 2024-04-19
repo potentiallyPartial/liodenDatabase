@@ -62,16 +62,16 @@ elseif ($bseType == "Breed Only"){
 
   switch ($bseRareity){
 
-    case C:
+    case "C":
       $bseRareity = "Common";
       break;
-    case U:
+    case "U":
       $bseRareity = "Uncommon";
       break;
-    case R:
+    case "R":
       $bseRareity = "Rare";
       break;
-    case S:
+    case "S":
       $bseRareity = "Special";
       break;
     default:
