@@ -49,7 +49,28 @@ if ($bseType == "Custom"){
   $output = "Your base: $usrInput is a custom base. <br> Dev: the Id for the base is $bseId";
 }
 elseif ($bseType == "Breed Only"){
-  $output = "Your base: $usrInput is a BreedOnly base. <br> Dev: the Id for the base is $bseId";
+
+  $breedSt = $conn->prepare("Select bse_color, bse_shade, bse_gradent, bse_rareity from bases where bse_id=?");
+  $breedSt->bind_param("i", $bseId);
+
+  $breedSt->execute();
+
+  $breedSt->bind_result($bseColor, $bseShade, $bseGradent, $bseRareity);
+  $breedSt->fetch();
+
+  $breedSt->close();
+
+  $output = "
+  $usrInput is an Breed Only Base. <br>
+  The components of this base are: <br>
+  Color = $bseColor. <br>
+  Shade = $bseShade. <br>
+  Gradent = $bseGradent. <br>
+  Rareity = $bseRareity. <br>
+
+  The two lions you breed neet to have these components between them for a chance to get this base.
+  ";
+
 }
 elseif ($bseType == "Combo"){
   $output = "Your base: $usrInput is a Combo base. <br> Dev: the Id for the base is $bseId";
@@ -65,8 +86,9 @@ elseif ($bseType == "Applicator"){
   $appSt->execute();
 
   $appSt->bind_result($apcName, $apcEvent, $apcTime, $apcLocation, $apcCost, $apcNotes);
-
   $appSt->fetch();
+
+  $aptSt->close();
 
   $output = "
   $usrInput is an Applcator Base. <br>
@@ -87,7 +109,6 @@ else{
 <!-- echo results from statments -->
 <p>
   <?php echo "$output"; ?>
-  <?php echo gettype($bseId); ?>
 </P>
 
 <form action="index.php"  class="cent">
