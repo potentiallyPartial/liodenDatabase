@@ -61,24 +61,11 @@ elseif ($bseType == "Breed Only"){
 
   $breedSt->close();
 
-  switch ($bseRareity){
-
-    case "C":
-      $bseRareity = "Common";
-      break;
-    case "U":
-      $bseRareity = "Uncommon";
-      break;
-    case "R":
-      $bseRareity = "Rare";
-      break;
-    case "S":
-      $bseRareity = "Special";
-      break;
-    default:
-      $bseRareity = "There is an error in the switch statment."
-
-  }
+  if ($bseRareity == "C") {$bseRareity = "Common";}
+  elseif ($bseRareity == "U") {$bseRareity = "Uncommon";}
+  elseif ($bseRareity == "R") {$bseRareity = "Rare";}
+  elseif ($bseRareity == "S") {$bseRareity = "Special";}
+  else {$bseRareity == "Error in if else."}
 
   $output = "
   $usrInput is an Breed Only Base. <br>
