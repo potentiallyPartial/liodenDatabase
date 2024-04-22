@@ -141,11 +141,11 @@ elseif ($bseType == "Combo"){
 
   //formating output
 
- $divider = "<br> Group Two: <br>"
+ $divider = "<br> Group Two: <br>";
 
- $endCap = "<br> Some combos can only be done when certan condions are met. If this base has conditoins they will show up here: <br> $cmdCond"
+ $endCap = "<br> Some combos can only be done when certan condions are met. If this base has conditoins they will show up here: <br> $cmdCond";
 
-  $output = "$usrInput is a Combo base you need to breed a lion with a base from group one with a lion form group 2 to get this base. <br>Group One Lions: <br>"
+  $output = "$usrInput is a Combo base you need to breed a lion with a base from group one with a lion form group 2 to get this base. <br>Group One Lions: <br>";
 
   $output .= $g1Out;
   $output .= $divider;

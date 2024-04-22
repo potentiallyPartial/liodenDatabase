@@ -1,32 +1,88 @@
 h1{
     text-align: center;
-    font-size: 100px;
+    font-size: 4em;
+    line-height: .5px;
+    color: #FF7700;
+    font-family: "Libre Baskerville", serif;
 }
 
 h4{
     text-align: center;
-    font-size: 25px;
+    padding-top: 35px;
+    font-size: 2em;
+    font-family: "Libre Baskerville", serif;
 }
 
-.body{
+body{
+    background-color: #323031;
+}
+
+p{
+    margin:25px;
+    padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 1.5em;
+    font-family: "Libre Baskerville", serif;
+    }
+
+form{
+    padding-bottom: 15px;
+}
+
+.formDiv{
     margin: auto;
-    width: 90%;
-    background-color: gray;
-    border-radius: 25px;
+    width: 94%;
+    height: 100%;
+    background-color: #E5E7E6;
+    border-radius: 5px;
 }
 
 .cent{
     text-align: center;
 }
-
-.results{
-    margin: 1rem;
-    padding: 2rem 2rem;
+/* formating text Input */
+input[type=text]{
+    background-color: #495867;
+    border: none;
+    border-radius: 5px;
+    width: 50%;
+    height: 5%;
+    color: #FF7700;
     text-align: center;
+    font-family: "Libre Baskerville", serif;
 }
 
-.rInner{
-    display: inline-block;
-    padding: 1rem 1rem;
-    vertical-align: middle;
+input[type=text]:focus{
+    outline: none;
+    border: none;
+}
+
+::placeholder{
+    color: #FF7700;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "Libre Baskerville", serif;
+}
+
+/* formating Submit button */
+
+input[type=submit]{
+    margin: 10px;
+    padding: 5px;
+    background-color: #495867;
+    border-style: solid;
+    border-color: #323031;
+    border-width: 4px;
+    border-radius: 5px;
+    transition: border-color .5s, border-radius .5s, color .5s;
+    font-family: "Libre Baskerville", serif;
+    color: #FF7700
+}
+
+input[type=submit]:hover{
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #FF7700;
+    color: whitesmoke;
 }
