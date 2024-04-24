@@ -46,9 +46,12 @@ $stmt->bind_param("s", $usrInput);
 <?php
 error_reporting(E_ALL);
  // ifElse for handling diffrent base Types
+
+
 if ($bseType == "Custom"){
   $output = "Your base: $usrInput is a custom base. <br> Dev: the Id for the base is $bseId";
 }
+
 elseif ($bseType == "Breed Only"){
 
   $breedSt = $conn->prepare("Select bse_color, bse_shade, bse_gradent, bse_rareity from bases where bse_id=?");
@@ -82,6 +85,7 @@ elseif ($bseType == "Breed Only"){
 
 }
 elseif ($bseType == "Combo"){
+  /*
 // statment for geting first gorup of posable perents
   $comboSt = $conn->prepare("Select cmb_1-1, cmb_1-2, cmb_1-3, cmb_1-4, cmb_1-5, cmb_1-6, cmb_1-7 from combo where bse_id=?");
   $comboSt->bind_param("i", $bseId);
@@ -98,10 +102,6 @@ elseif ($bseType == "Combo"){
         array_push($d1out, $data1);
     }
 }
-/*
-  $comboSt->bind_result($cmd11, $cmd12, $cmd13, $cmd14, $cmd15, $cmd16, $cmd17);
-  $comboSt->fetch();
-*/
   $comboSt->close();
 
   // statment for geting second set of parents
@@ -178,8 +178,7 @@ elseif ($bseType == "Combo"){
   $output .= $divider;
   $output .= $g2names;
   $output .= $endCap;
-
-  /*
+  */
 
   // Fetching first group of possible parents
 $comboSt = $conn->prepare("SELECT cmb_1-1, cmb_1-2, cmb_1-3, cmb_1-4, cmb_1-5, cmb_1-6, cmb_1-7 FROM combo WHERE bse_id=?");
@@ -233,7 +232,6 @@ $output .= "Some combos can only be done when certain conditions are met. If thi
 
 echo $output;
 
-  */
 }
 elseif ($bseType == "NCL"){
   $output = " $usrInput is a NCL they can be found in explore. <br> Dev: the Id for the base is $bseId";
