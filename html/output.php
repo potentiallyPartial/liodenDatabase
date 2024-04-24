@@ -216,10 +216,10 @@ $comboSt = $conn->prepare("SELECT bse_name FROM bases WHERE bse_id=?");
 var_dump($d1Out);
 
 foreach ($d1Out as $row) {
-  if ($row['cmb1_1'] == null) {
+  if ($row == null) {
       continue; // Skip iteration if $row['cmb1_1'] is null
   } else {
-      $baseId = $row['cmb1_1'];
+      $baseId = $row;
       $comboSt->bind_param("i", $baseId);
       $comboSt->execute();
       $comboSt->bind_result($idToName);
@@ -231,7 +231,7 @@ foreach ($d1Out as $row) {
 var_dump($g1names);
 
 foreach ($d2Out as $row) {
-    $baseId = $row['cmb2_1']; // Assuming cmb2_1 is the base ID, adjust as needed
+    $baseId = $row; // Assuming cmb2_1 is the base ID, adjust as needed
     $comboSt->bind_param("i", $baseId);
     $comboSt->execute();
     $comboSt->bind_result($idToName);
