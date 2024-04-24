@@ -78,7 +78,7 @@ elseif ($bseType == "Breed Only"){
   Color = $bseColor. <br>
   Shade = $bseShade. <br>
   Gradent = $bseGradent. <br>
-  Rareity = $Rareity. <br>
+  Rareity = $bseRareity. <br>
 
   The two lions you breed need to have these components between them for a chance to get this base.
   ";
