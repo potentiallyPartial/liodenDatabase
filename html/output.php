@@ -199,7 +199,7 @@ $d2Out = $result->fetch_all(MYSQLI_ASSOC);
 $comboSt->close();
 
 // Fetching conditions
-$comboSt = $conn->prepare("SELECT cmd_cond FROM combo WHERE bse_id=?");
+$comboSt = $conn->prepare("SELECT cmb_cond FROM combo WHERE bse_id=?");
 $comboSt->bind_param("i", $bseId);
 $comboSt->execute();
 $comboSt->bind_result($cmdCond);
