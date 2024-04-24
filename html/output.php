@@ -190,7 +190,7 @@ $result = $comboSt->get_result();
 $d1Out = $result->fetch_all(MYSQLI_ASSOC);
 $comboSt->close();
 
-var_dump($d1Out);
+//var_dump($d1Out);
 
 // Fetching second set of parents
 $comboSt = $conn->prepare("SELECT cmb2_1, cmb2_2, cmb2_3, cmb2_4, cmb2_5, cmb2_6, cmb2_7 FROM combo WHERE bse_id=?");
@@ -223,7 +223,7 @@ foreach ($d1Out as $row) {
     $g1names[] = $idToName;
 }
 
-//var_dump($g1names);
+var_dump($g1names);
 
 foreach ($d2Out as $row) {
     $baseId = $row['cmb2_1']; // Assuming cmb2_1 is the base ID, adjust as needed
