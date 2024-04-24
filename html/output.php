@@ -214,8 +214,9 @@ $comboSt->close();
 $g1names = array();
 $g2names = array();
 $comboSt = $conn->prepare("SELECT bse_name FROM bases WHERE bse_id=?");
+
 foreach ($d1Out as $row) {
-    $baseId = $row['cmb1_1']; // Assuming cmb1_1 is the base ID, adjust as needed
+    $baseId = $row['cmb1_1'];
     $comboSt->bind_param("i", $baseId);
     $comboSt->execute();
     $comboSt->bind_result($idToName);
