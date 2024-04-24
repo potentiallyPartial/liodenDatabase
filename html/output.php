@@ -190,7 +190,7 @@ $result = $comboSt->get_result();
 $d1Out = $result->fetch_all(MYSQLI_ASSOC);
 $comboSt->close();
 
-$test = implode($d1Out);
+$test = implode("",$d1Out);
 echo"$d1Out";
 
 // Fetching second set of parents
@@ -201,7 +201,7 @@ $result = $comboSt->get_result();
 $d2Out = $result->fetch_all(MYSQLI_ASSOC);
 $comboSt->close();
 
-$test = implode($d2Out);
+$test = implode("",$d2Out);
 echo"$d2Out";
 
 // Fetching conditions
@@ -224,7 +224,7 @@ foreach ($d1Out as $ids) {
     $g1names[] = $idToName;
 }
 
-$test = implode($g1names);
+$test = implode("",$g1names);
 echo"$g1names";
 
 foreach ($d2Out as $ids) {
@@ -235,16 +235,16 @@ foreach ($d2Out as $ids) {
     $g2names[] = $idToName;
 }
 
-$test = implode($g2names);
+$test = implode("",$g2names);
 echo"$g2names";
 
 $comboSt->close();
 
 // Formatting output
 $output = "$usrInput is a Combo base you need to breed a lion with a base from group one with a lion from group 2 to get this base.<br>Group One Lions:<br>";
-$output .= implode($g1names);
+$output .= implode("",$g1names);
 $output .= "<br>";
-$output .= implode($g2names);
+$output .= implode("",$g2names);
 $output .= "$cmdCond";
 
 }
