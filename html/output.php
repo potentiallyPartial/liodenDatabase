@@ -214,8 +214,9 @@ $comboSt->close();
 $g1names = array();
 $g2names = array();
 $comboSt = $conn->prepare("SELECT bse_name FROM bases WHERE bse_id=?");
-foreach ($d1Out as $ids) {
-    $comboSt->bind_param("i", $ids);
+foreach ($d1Out as $row) {
+    $baseId = $row['cmb1_1']; // Assuming cmb1_1 is the base ID, adjust as needed
+    $comboSt->bind_param("i", $baseId);
     $comboSt->execute();
     $comboSt->bind_result($idToName);
     $comboSt->fetch();
@@ -224,8 +225,9 @@ foreach ($d1Out as $ids) {
 
 var_dump($g1names);
 
-foreach ($d2Out as $ids) {
-    $comboSt->bind_param("i", $ids);
+foreach ($d2Out as $row) {
+    $baseId = $row['cmb2_1']; // Assuming cmb2_1 is the base ID, adjust as needed
+    $comboSt->bind_param("i", $baseId);
     $comboSt->execute();
     $comboSt->bind_result($idToName);
     $comboSt->fetch();
@@ -238,9 +240,9 @@ $comboSt->close();
 
 // Formatting output
 $output = "$usrInput is a Combo base you need to breed a lion with a base from group one with a lion from group 2 to get this base.<br>Group One Lions:<br>";
-$output .= implode(" ",$g1names);
-$output .= "<br>";
-$output .= implode(" ",$g2names);
+$output .= implode(" ", $g1names) . "<br>"; // Added separator
+$output .= "Group Two Lions:<br>"; // Added header for Group Two Lions
+$output .= implode(" ", $g2names) . "<br>"; // Added separator
 $output .= "$cmdCond";
 
 }
