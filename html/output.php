@@ -200,7 +200,7 @@ $result = $comboSt->get_result();
 $d2Out = $result->fetch_all(MYSQLI_ASSOC);
 $comboSt->close();
 
-var_dump($d2Out);
+//var_dump($d2Out);
 
 // Fetching conditions
 $comboSt = $conn->prepare("SELECT cmb_cond FROM combo WHERE bse_id=?");
@@ -223,7 +223,7 @@ foreach ($d1Out as $row) {
     $g1names[] = $idToName;
 }
 
-var_dump($g1names);
+//var_dump($g1names);
 
 foreach ($d2Out as $row) {
     $baseId = $row['cmb2_1']; // Assuming cmb2_1 is the base ID, adjust as needed
@@ -234,7 +234,7 @@ foreach ($d2Out as $row) {
     $g2names[] = $idToName;
 }
 
-var_dump($g2names);
+//var_dump($g2names);
 
 $comboSt->close();
 
