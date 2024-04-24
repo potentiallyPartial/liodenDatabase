@@ -227,12 +227,9 @@ foreach ($d2Out as $ids) {
 $comboSt->close();
 
 // Formatting output
-$output = "$usrInput is a Combo base you need to breed a lion with a base from group one with a lion from group 2 to get this base.<br>Group One Lions:<br>";
-$output .= implode(", ", $g1names) . "<br>";
-$output .= "Group Two Lions:<br>" . implode(", ", $g2names) . "<br>";
-$output .= "Some combos can only be done when certain conditions are met. If this base has conditions, they will show up here:<br>$cmdCond";
-
-echo $output;
+$output = "$usrInput is a Combo base <br>";
+$output . implode(", ", $g1names) . "<br>";
+$output . implode(", ", $g2names) . "<br>";
 
 }
 elseif ($bseType == "NCL"){
