@@ -246,7 +246,7 @@ elseif ($bseType == "Applicator"){
   $appSt->bind_result($apcName, $apcEvent, $apcTime, $apcLocation, $apcCost, $apcNotes);
   $appSt->fetch();
 
-  $aptSt->close();
+  $appSt->close();
 
   $output = "
   $usrInput is an Applcator Base. <br>
