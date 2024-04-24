@@ -228,8 +228,9 @@ $comboSt->close();
 
 // Formatting output
 $output = "$usrInput is a Combo base you need to breed a lion with a base from group one with a lion from group 2 to get this base.<br>Group One Lions:<br>";
-$output .= "$g1names <br>";
-$output .= "$g2names <br>";
+$output .= implode($g1names);
+$output .= "<br>";
+$output .= implode($g2names);
 $output .= "$cmdCond";
 
 }
