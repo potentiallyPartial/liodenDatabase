@@ -190,8 +190,7 @@ $result = $comboSt->get_result();
 $d1Out = $result->fetch_all(MYSQLI_ASSOC);
 $comboSt->close();
 
-$test = implode("",$d1Out);
-echo"$test";
+var_dump($d1Out);
 
 // Fetching second set of parents
 $comboSt = $conn->prepare("SELECT cmb2_1, cmb2_2, cmb2_3, cmb2_4, cmb2_5, cmb2_6, cmb2_7 FROM combo WHERE bse_id=?");
@@ -201,8 +200,7 @@ $result = $comboSt->get_result();
 $d2Out = $result->fetch_all(MYSQLI_ASSOC);
 $comboSt->close();
 
-$test = implode(" ",$d2Out);
-echo"$test";
+var_dump($d2Out);
 
 // Fetching conditions
 $comboSt = $conn->prepare("SELECT cmb_cond FROM combo WHERE bse_id=?");
@@ -224,8 +222,7 @@ foreach ($d1Out as $ids) {
     $g1names[] = $idToName;
 }
 
-$test = implode(" ",$g1names);
-echo"$test";
+var_dump($g1names);
 
 foreach ($d2Out as $ids) {
     $comboSt->bind_param("i", $ids);
@@ -235,8 +232,7 @@ foreach ($d2Out as $ids) {
     $g2names[] = $idToName;
 }
 
-$test = implode(" ",$g2names);
-echo"$test";
+var_dump($g2names);
 
 $comboSt->close();
 
