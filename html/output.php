@@ -91,12 +91,11 @@ elseif ($bseType == "Combo"){
   $result = $comboSt->get_result();
   $data = $result->fetch_all(MYSQLI_ASSOC);
 
-  $g1Out = "";
+  $d1Out = array();
 // loop to add them to g1Out
-  foreach ($data as &$group1) {
-    if ($group1) {
-        $g1Out .= $group1;
-        $g1Out .= ", ";
+  foreach ($data as &$data1) {
+    if ($data1) {
+        array_push($d1out, $data1);
     }
 }
 /*
@@ -116,13 +115,12 @@ elseif ($bseType == "Combo"){
 
   $result = $comboSt->get_result();
   $data = $result->fetch_all(MYSQLI_ASSOC);
+  $d2Out = array();
 
-  $g2Out = "";
 // loop for adding results into g2Out
-  foreach ($data as &$group2) {
-    if ($group2) {
-        $g2Out .= $group2;
-        $g2Out .= ", ";
+  foreach ($data as &$data2) {
+    if ($data2) {
+        array_push($d2Out, $data2);
     }
 }
 
@@ -139,18 +137,103 @@ elseif ($bseType == "Combo"){
 
   $comboSt->close();
 
+  // loops for translating to baseName
+
+  $g1names = array();
+  $g2names = array();
+
+  $comboSt = $conn->prepare("Select bse_name from bases where bse_id=?");
+
+  foreach ($d1Out as $ids){
+
+    $comboSt->bind_param("i", $ids);
+    $comboSt->bind_resutl($idToName);
+    $comboSt->fetch();
+
+    array_push($g1names, $idToName);
+
+  }
+
+  foreach ($d2Out as $ids){
+
+    $comboSt->bind_param("i", $ids);
+    $comboSt->bind_resutl($idToName);
+    $comboSt->fetch();
+
+    array_push($g1names, $idToName);
+
+  }
+
+  $comboSt->Close();
+
   //formating output
 
- $divider = "<br> Group Two: <br>"
+ $divider = "<br> Group Two: <br>";
 
- $endCap = "<br> Some combos can only be done when certan condions are met. If this base has conditoins they will show up here: <br> $cmdCond"
+ $endCap = "<br> Some combos can only be done when certan condions are met. If this base has conditoins they will show up here: <br> $cmdCond";
 
-  $output = "$usrInput is a Combo base you need to breed a lion with a base from group one with a lion form group 2 to get this base. <br>Group One Lions: <br>"
+  $output = "$usrInput is a Combo base you need to breed a lion with a base from group one with a lion form group 2 to get this base. <br>Group One Lions: <br>";
 
-  $output .= $g1Out;
+  $output .= $g1names;
   $output .= $divider;
-  $output .= $g2Out;
+  $output .= $g2names;
   $output .= $endCap;
+
+  /*
+
+  // Fetching first group of possible parents
+$comboSt = $conn->prepare("SELECT cmb_1-1, cmb_1-2, cmb_1-3, cmb_1-4, cmb_1-5, cmb_1-6, cmb_1-7 FROM combo WHERE bse_id=?");
+$comboSt->bind_param("i", $bseId);
+$comboSt->execute();
+$result = $comboSt->get_result();
+$d1Out = $result->fetch_all(MYSQLI_ASSOC);
+$comboSt->close();
+
+// Fetching second set of parents
+$comboSt = $conn->prepare("SELECT cmb_2-1, cmb_2-2, cmb_2-3, cmb_2-4, cmb_2-5, cmb_2-6, cmb_2-7 FROM combo WHERE bse_id=?");
+$comboSt->bind_param("i", $bseId);
+$comboSt->execute();
+$result = $comboSt->get_result();
+$d2Out = $result->fetch_all(MYSQLI_ASSOC);
+$comboSt->close();
+
+// Fetching conditions
+$comboSt = $conn->prepare("SELECT cmd_cond FROM combo WHERE bse_id=?");
+$comboSt->bind_param("i", $bseId);
+$comboSt->execute();
+$comboSt->bind_result($cmdCond);
+$comboSt->fetch();
+$comboSt->close();
+
+// Fetching base names
+$g1names = array();
+$g2names = array();
+$comboSt = $conn->prepare("SELECT bse_name FROM bases WHERE bse_id=?");
+foreach ($d1Out as $ids) {
+    $comboSt->bind_param("i", $ids);
+    $comboSt->execute();
+    $comboSt->bind_result($idToName);
+    $comboSt->fetch();
+    $g1names[] = $idToName;
+}
+foreach ($d2Out as $ids) {
+    $comboSt->bind_param("i", $ids);
+    $comboSt->execute();
+    $comboSt->bind_result($idToName);
+    $comboSt->fetch();
+    $g2names[] = $idToName;
+}
+$comboSt->close();
+
+// Formatting output
+$output = "$usrInput is a Combo base you need to breed a lion with a base from group one with a lion from group 2 to get this base.<br>Group One Lions:<br>";
+$output .= implode(", ", $g1names) . "<br>";
+$output .= "Group Two Lions:<br>" . implode(", ", $g2names) . "<br>";
+$output .= "Some combos can only be done when certain conditions are met. If this base has conditions, they will show up here:<br>$cmdCond";
+
+echo $output;
+
+  */
 }
 elseif ($bseType == "NCL"){
   $output = " $usrInput is a NCL they can be found in explore. <br> Dev: the Id for the base is $bseId";
