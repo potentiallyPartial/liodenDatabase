@@ -183,7 +183,7 @@ elseif ($bseType == "Combo"){
   */
 
   // Fetching first group of possible parents
-$comboSt = $conn->prepare("SELECT cmb_1-1, cmb_1-2, cmb_1-3, cmb_1-4, cmb_1-5, cmb_1-6, cmb_1-7 FROM combo WHERE bse_id=?");
+$comboSt = $conn->prepare("SELECT cmb1_1, cmb1_2, cmb1_3, cmb1_4, cmb1_5, cmb1_6, cmb1_7 FROM combo WHERE bse_id=?");
 $comboSt->bind_param("i", $bseId);
 $comboSt->execute();
 $result = $comboSt->get_result();
@@ -191,7 +191,7 @@ $d1Out = $result->fetch_all(MYSQLI_ASSOC);
 $comboSt->close();
 
 // Fetching second set of parents
-$comboSt = $conn->prepare("SELECT cmb_2-1, cmb_2-2, cmb_2-3, cmb_2-4, cmb_2-5, cmb_2-6, cmb_2-7 FROM combo WHERE bse_id=?");
+$comboSt = $conn->prepare("SELECT cmb2_1, cmb2_2, cmb2_3, cmb2_4, cmb2_5, cmb2_6, cmb2_7 FROM combo WHERE bse_id=?");
 $comboSt->bind_param("i", $bseId);
 $comboSt->execute();
 $result = $comboSt->get_result();
