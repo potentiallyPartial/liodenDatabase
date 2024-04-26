@@ -120,17 +120,6 @@ $comboSt->close();
 $comboSt = $conn->prepare("SELECT bse_name FROM bases WHERE bse_id=?");
 $comboSt->bind_param("i", $baseId);
 
-// Function for turning array from name to numbers
-function array_default_key($array) {
-    $arrayTemp = array();
-    $i = 0;
-    foreach ($array as $key => $val) {
-        $arrayTemp[$i] = $val;
-        $i++;
-    }
-    return $arrayTemp;
-}
-
 // Fetching group one names
 $g1names = [];
 foreach ($d1Out as $key => $baseId) {
@@ -167,7 +156,7 @@ $output .= "$cmbCond";
 
 }
 elseif ($bseType == "NCL"){
-  $output = " $usrInput is a NCL they can be found in explore. <br> Dev: the Id for the base is $bseId";
+  $output = " $usrInput is a NCL they can be found in explore.";
 }
 elseif ($bseType == "Applicator"){
 
