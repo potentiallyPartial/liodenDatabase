@@ -3,6 +3,10 @@
 <html>
 <header>
   <link rel="stylesheet" href="css/output.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </header>
 <body>
 
@@ -154,9 +158,10 @@ $comboSt->close();
 
 // Constructing the output
 $output = "$usrInput is a Combo base you need to breed a lion with a base from group one with a lion from group 2 to get this base.<br>Group One Lions:<br>";
-$output .= implode(",", $g1names) . "<br>"; 
+$output .= implode(", ", $g1names) . "<br>"; 
 $output .= "Group Two Lions:<br>"; 
-$output .= implode(",", $g2names) . "<br>"; 
+$output .= implode(", ", $g2names) . "<br>";
+$output .= "If there are any other requirments they will be listed here:<br>"; 
 $output .= "$cmbCond";
 
 
