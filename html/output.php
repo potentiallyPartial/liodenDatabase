@@ -15,6 +15,10 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+/*
+Things that need fixing:
+Mobola base gives no base / empty error
+*/
 
 // make conection with my sql server
 $conn = new mysqli("localhost","Tiamat","5he@ds","lioden");
@@ -179,6 +183,11 @@ elseif ($bseType == "Applicator"){
   ";
   
 }
+
+elseif ($bseType == "Exclusive"){
+  $output = "$usrInput is an NCL Exclusive base. <br> This base can be found as a NCL with a Dramboat king or passed down if one of the parents has this base.";
+}
+
 else{
   $output = "You either provided a base that does not exist or entred a blank feild.";
 }
