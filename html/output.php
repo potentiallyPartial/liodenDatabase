@@ -87,168 +87,78 @@ elseif ($bseType == "Breed Only"){
 
 }
 elseif ($bseType == "Combo"){
-  /*
-// statment for geting first gorup of posable perents
-  $comboSt = $conn->prepare("Select cmb_1-1, cmb_1-2, cmb_1-3, cmb_1-4, cmb_1-5, cmb_1-6, cmb_1-7 from combo where bse_id=?");
-  $comboSt->bind_param("i", $bseId);
-
-  $comboSt->execute();
-
-  $result = $comboSt->get_result();
-  $data = $result->fetch_all(MYSQLI_ASSOC);
-
-  $d1Out = array();
-// loop to add them to g1Out
-  foreach ($data as &$data1) {
-    if ($data1) {
-        array_push($d1out, $data1);
-    }
-}
-  $comboSt->close();
-
-  // statment for geting second set of parents
-  $comboSt = $conn->prepare("Select cmb_2-1, cmb_2-2, cmb_2-3, cmb_2-4, cmb_2-5, cmb_2-6, cmb_2-7 from combo where bse_id=?");
-  $comboSt->bind_param("i", $bseId);
-
-  $comboSt->execute();
-
-  $comboSt->bind_result($cmd21, $cmd22, $cmd23, $cmd24, $cmd25, $cmd26, $cmd27);
-  $comboSt->fetch();
-
-  $result = $comboSt->get_result();
-  $data = $result->fetch_all(MYSQLI_ASSOC);
-  $d2Out = array();
-
-// loop for adding results into g2Out
-  foreach ($data as &$data2) {
-    if ($data2) {
-        array_push($d2Out, $data2);
-    }
-}
-
-  $comboSt->close();
-
-// statment for geting conditions
-  $comboSt = $conn->prepare("Select cmd_cond from combo where bse_id=?");
-  $comboSt->bind_param("i", $bseId);
-
-  $comboSt->execute();
-
-  $comboSt->bind_result($cmdCond);
-  $comboSt->fetch();
-
-  $comboSt->close();
-
-  // loops for translating to baseName
-
-  $g1names = array();
-  $g2names = array();
-
-  $comboSt = $conn->prepare("Select bse_name from bases where bse_id=?");
-
-  foreach ($d1Out as $ids){
-
-    $comboSt->bind_param("i", $ids);
-    $comboSt->bind_resutl($idToName);
-    $comboSt->fetch();
-
-    array_push($g1names, $idToName);
-
-  }
-
-  foreach ($d2Out as $ids){
-
-    $comboSt->bind_param("i", $ids);
-    $comboSt->bind_resutl($idToName);
-    $comboSt->fetch();
-
-    array_push($g1names, $idToName);
-
-  }
-
-  $comboSt->Close();
-
-  //formating output
-
- $divider = "<br> Group Two: <br>";
-
- $endCap = "<br> Some combos can only be done when certan condions are met. If this base has conditoins they will show up here: <br> $cmdCond";
-
-  $output = "$usrInput is a Combo base you need to breed a lion with a base from group one with a lion form group 2 to get this base. <br>Group One Lions: <br>";
-
-  $output .= $g1names;
-  $output .= $divider;
-  $output .= $g2names;
-  $output .= $endCap;
-  */
-
-  // Fetching first group of possible parents
+ 
+// Prepare the first combo query
 $comboSt = $conn->prepare("SELECT cmb1_1, cmb1_2, cmb1_3, cmb1_4, cmb1_5, cmb1_6, cmb1_7 FROM combo WHERE bse_id=?");
 $comboSt->bind_param("i", $bseId);
 $comboSt->execute();
 $result = $comboSt->get_result();
-$d1Out = $result->fetch_all(MYSQLI_ASSOC);
+$d1Out = $result->fetch_assoc();
 $comboSt->close();
 
-// Fetching second set of parents
+// Prepare the second combo query
 $comboSt = $conn->prepare("SELECT cmb2_1, cmb2_2, cmb2_3, cmb2_4, cmb2_5, cmb2_6, cmb2_7 FROM combo WHERE bse_id=?");
 $comboSt->bind_param("i", $bseId);
 $comboSt->execute();
 $result = $comboSt->get_result();
-$d2Out = $result->fetch_all(MYSQLI_ASSOC);
+$d2Out = $result->fetch_assoc();
 $comboSt->close();
 
-//var_dump($d2Out);
-
-// Fetching conditions
+// Prepare the combo condition query
 $comboSt = $conn->prepare("SELECT cmb_cond FROM combo WHERE bse_id=?");
 $comboSt->bind_param("i", $bseId);
 $comboSt->execute();
-$comboSt->bind_result($cmdCond);
+$comboSt->bind_result($cmbCond);
 $comboSt->fetch();
 $comboSt->close();
 
-// Fetching base names
-$g1names = array();
-$g2names = array();
+// Prepare the base name query
 $comboSt = $conn->prepare("SELECT bse_name FROM bases WHERE bse_id=?");
+$comboSt->bind_param("i", $baseId);
 
-var_dump($d1Out);
-
-foreach ($d1Out as $row) {
-  if ($row == null) {
-      continue; // Skip iteration if $row['cmb1_1'] is null
-  } else {
-      $baseId = $row;
-      $comboSt->bind_param("i", $baseId);
-      $comboSt->execute();
-      $comboSt->bind_result($idToName);
-      $comboSt->fetch();
-      $g1names[] = $idToName;
-  }
+// Function for turning array from name to numbers
+function array_default_key($array) {
+    $arrayTemp = array();
+    $i = 0;
+    foreach ($array as $key => $val) {
+        $arrayTemp[$i] = $val;
+        $i++;
+    }
+    return $arrayTemp;
 }
 
-var_dump($g1names);
-
-foreach ($d2Out as $row) {
-    $baseId = $row; // Assuming cmb2_1 is the base ID, adjust as needed
-    $comboSt->bind_param("i", $baseId);
-    $comboSt->execute();
-    $comboSt->bind_result($idToName);
-    $comboSt->fetch();
-    $g2names[] = $idToName;
+// Fetching group one names
+$g1names = [];
+foreach ($d1Out as $key => $baseId) {
+    if ($baseId !== NULL) {
+        $comboSt->execute();
+        $comboSt->bind_result($idToName);
+        $comboSt->fetch();
+        $g1names[] = $idToName;
+    }
 }
 
-//var_dump($g2names);
+// Fetching group two names
+$g2names = [];
+foreach ($d2Out as $key => $baseId) {
+    if ($baseId !== NULL) {
+        $comboSt->execute();
+        $comboSt->bind_result($idToName);
+        $comboSt->fetch();
+        $g2names[] = $idToName;
+    }
+}
 
+// Closing the base name query
 $comboSt->close();
 
-// Formatting output
+// Constructing the output
 $output = "$usrInput is a Combo base you need to breed a lion with a base from group one with a lion from group 2 to get this base.<br>Group One Lions:<br>";
-$output .= implode(" ", $g1names) . "<br>"; // Added separator
-$output .= "Group Two Lions:<br>"; // Added header for Group Two Lions
-$output .= implode(" ", $g2names) . "<br>"; // Added separator
-$output .= "$cmdCond";
+$output .= implode(",", $g1names) . "<br>"; 
+$output .= "Group Two Lions:<br>"; 
+$output .= implode(",", $g2names) . "<br>"; 
+$output .= "$cmbCond";
+
 
 }
 elseif ($bseType == "NCL"){
