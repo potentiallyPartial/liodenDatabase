@@ -59,7 +59,7 @@ error_reporting(E_ALL);
 
 
 if ($bseType == "Custom"){
-  $output = "Your base: $usrInput is a custom base. It can be applied via Oasis"
+  $output = "Your base: $usrInput is a custom base. It can be applied via Oasis";
 }
 
 elseif ($bseType == "Breed Only"){
