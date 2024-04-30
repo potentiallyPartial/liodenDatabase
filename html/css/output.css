@@ -26,6 +26,26 @@ p{
     font-family: "Libre Baskerville", serif;
     }
 
+    input[type=submit]{
+        margin: 10px;
+        padding: 5px;
+        background-color: #495867;
+        border-style: solid;
+        border-color: #323031;
+        border-width: 4px;
+        border-radius: 5px;
+        transition: border-color .5s, border-radius .5s, color .5s;
+        font-family: "Libre Baskerville", serif;
+        color: #FF7700
+    }
+    
+    input[type=submit]:hover{
+        border-style: solid;
+        border-radius: 10px;
+        border-color: #FF7700;
+        color: whitesmoke;
+    }
+
 .contaner{
     margin: auto;
     width: 50%;
