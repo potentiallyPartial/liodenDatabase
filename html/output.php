@@ -76,8 +76,7 @@ elseif ($bseType == "Breed Only"){
 
   if ($bseRareity == "S"){
     $output = "$usrInput is an specal Breed Only Base. <br>
-    They can only appear on cubs bred from at least one parent with that specific Special base. This base can also be found,<br>
-    $bsenotes.
+    They can only appear on cubs bred from at least one parent with that specific Special base. This base can also be found, $bsenotes.
     ";
   }
   
@@ -104,6 +103,7 @@ elseif ($bseType == "Breed Only"){
 
 
 }
+
 elseif ($bseType == "Combo"){
  
 // Prepare the first combo query
