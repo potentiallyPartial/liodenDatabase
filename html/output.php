@@ -64,15 +64,35 @@ if ($bseType == "Custom"){
 
 elseif ($bseType == "Breed Only"){
 
-  $breedSt = $conn->prepare("Select bse_color, bse_shade, bse_gradent, bse_rareity from bases where bse_id=?");
+  $breedSt = $conn->prepare("Select bse_color, bse_shade, bse_gradent, bse_rareity, bse_notes from bases where bse_id=?");
   $breedSt->bind_param("i", $bseId);
 
   $breedSt->execute();
 
-  $breedSt->bind_result($bseColor, $bseShade, $bseGradent, $bseRareity);
+  $breedSt->bind_result($bseColor, $bseShade, $bseGradent, $bseRareity, $bsenotes);
   $breedSt->fetch();
 
   $breedSt->close();
+
+  if ($bseRareity == "S"){
+    $output = "$usrInput is an specal Breed Only Base. <br>
+    They can only appear on cubs bred from at least one parent with that specific Special base. This base can also be found,<br>
+    $bsenotes.
+    ";
+  }
+  
+  else{
+    $output = "
+    $usrInput is an Breed Only Base. <br>
+    The components of this base are: <br>
+    Color = $bseColor. <br>
+    Shade = $bseShade. <br>
+    Gradent = $bseGradent. <br>
+    Rareity = $bseRareity. <br>
+  
+    The two lions you breed need to have these components between them for a chance to get this base.
+    ";
+  }
 
   /*
   if ($bseRareity == "C") {$Rareity = "Common";}
@@ -82,16 +102,6 @@ elseif ($bseType == "Breed Only"){
   else {$Rareity == "Error in if else."}\
 */
 
-  $output = "
-  $usrInput is an Breed Only Base. <br>
-  The components of this base are: <br>
-  Color = $bseColor. <br>
-  Shade = $bseShade. <br>
-  Gradent = $bseGradent. <br>
-  Rareity = $bseRareity. <br>
-
-  The two lions you breed need to have these components between them for a chance to get this base.
-  ";
 
 }
 elseif ($bseType == "Combo"){
