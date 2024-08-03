@@ -54,9 +54,10 @@ $stmt->bind_param("s", $usrInput);
 ?>
 
 <?php
+// turn on error reporting
 error_reporting(E_ALL);
- // ifElse for handling diffrent base Types
 
+// Statments for base types, curently formated as If else chain rather than switch as switch prevents program from runing unsure why.
 
 if ($bseType == "Custom"){
   $output = "Your base: $usrInput is a custom base. It can be applied via Oasis";
@@ -64,15 +65,24 @@ if ($bseType == "Custom"){
 
 elseif ($bseType == "Breed Only"){
 
+  // structure of each statment. Step one prepare statmetn to get nessasary infromation.
   $breedSt = $conn->prepare("Select bse_color, bse_shade, bse_gradent, bse_rareity, bse_notes from bases where bse_id=?");
+  // bind base id goten in prevous method
   $breedSt->bind_param("i", $bseId);
+
+  // run and bind vars
 
   $breedSt->execute();
 
   $breedSt->bind_result($bseColor, $bseShade, $bseGradent, $bseRareity, $bsenotes);
   $breedSt->fetch();
 
+
+  //close statment when done 
+
   $breedSt->close();
+
+  // determining base rearty as the specal 'S' rairity requires a diffrent output. Then seting the output var to the required output
 
   if ($bseRareity == "S"){
     $output = "$usrInput is an specal Breed Only Base. <br>
@@ -93,6 +103,7 @@ elseif ($bseType == "Breed Only"){
     ";
   }
 
+  // prototype for expanding base
   /*
   if ($bseRareity == "C") {$Rareity = "Common";}
   elseif ($bseRareity == "U") {$Rareity = "Uncommon";}
@@ -106,7 +117,7 @@ elseif ($bseType == "Breed Only"){
 
 elseif ($bseType == "Combo"){
  
-// Prepare the first combo query
+// set up and run first statment
 $comboSt = $conn->prepare("SELECT cmb1_1, cmb1_2, cmb1_3, cmb1_4, cmb1_5, cmb1_6, cmb1_7 FROM combo WHERE bse_id=?");
 $comboSt->bind_param("i", $bseId);
 $comboSt->execute();
@@ -114,7 +125,7 @@ $result = $comboSt->get_result();
 $d1Out = $result->fetch_assoc();
 $comboSt->close();
 
-// Prepare the second combo query
+// set up and run second statment
 $comboSt = $conn->prepare("SELECT cmb2_1, cmb2_2, cmb2_3, cmb2_4, cmb2_5, cmb2_6, cmb2_7 FROM combo WHERE bse_id=?");
 $comboSt->bind_param("i", $bseId);
 $comboSt->execute();
@@ -122,7 +133,7 @@ $result = $comboSt->get_result();
 $d2Out = $result->fetch_assoc();
 $comboSt->close();
 
-// Prepare the combo condition query
+// set up and run statment to get the condition
 $comboSt = $conn->prepare("SELECT cmb_cond FROM combo WHERE bse_id=?");
 $comboSt->bind_param("i", $bseId);
 $comboSt->execute();
@@ -130,11 +141,11 @@ $comboSt->bind_result($cmbCond);
 $comboSt->fetch();
 $comboSt->close();
 
-// Prepare the base name query
+// statment for retreaveing the base name
 $comboSt = $conn->prepare("SELECT bse_name FROM bases WHERE bse_id=?");
 $comboSt->bind_param("i", $baseId);
 
-// Fetching group one names
+// run loop to get base names
 $g1names = [];
 foreach ($d1Out as $key => $baseId) {
     if ($baseId !== NULL) {
@@ -145,7 +156,7 @@ foreach ($d1Out as $key => $baseId) {
     }
 }
 
-// Fetching group two names
+// run loop to get base 2 names
 $g2names = [];
 foreach ($d2Out as $key => $baseId) {
     if ($baseId !== NULL) {
@@ -156,10 +167,10 @@ foreach ($d2Out as $key => $baseId) {
     }
 }
 
-// Closing the base name query
+// close the base name query
 $comboSt->close();
 
-// Constructing the output
+// format data into output statment by apending the var
 $output = "$usrInput is a Combo base you need to breed a lion with a base from group one with a lion from group 2 to get this base.<br>Group One Lions:<br>";
 $output .= implode(", ", $g1names) . "<br>"; 
 $output .= "Group Two Lions:<br>"; 
@@ -198,11 +209,13 @@ elseif ($bseType == "Exclusive"){
   $output = "$usrInput is an NCL Exclusive base. <br> This base can be found as a NCL with a Dramboat king or passed down if one of the parents has this base.";
 }
 
+//error reporting for non caught arguments
 else{
   $output = "You either provided a base that does not exist or entred a blank feild.";
 }
 ?> 
 
+<!-- Html for the output statment -->
 <div class="contaner">
   <h1> The Results Are In! </h1>
 <!-- echo results from statments -->
