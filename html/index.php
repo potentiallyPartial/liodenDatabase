@@ -19,7 +19,7 @@
     
         <form method="POST" action="output.php"  class="cent">
         <input type="text" name="base" placeholder="Enter Base Name" list="bases"><br>
-        <input type="submit" value="Deploy the Rats!">
+        <input type="submit" value="Search This Base">
         </form>
 
     </div>

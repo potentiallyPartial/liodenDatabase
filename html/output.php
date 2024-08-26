@@ -21,6 +21,9 @@ Mobola base gives no base / empty error
 */
 
 // make conection with my sql server
+require_once('dbCon.php');
+OpenCon();
+/*
 $conn = new mysqli("localhost","Tiamat","5he@ds","lioden");
 
 // Check connection
@@ -32,6 +35,7 @@ if ($conn -> connect_errno) {
 else{
   //echo "connected";
 }
+  */
 ?>
 
 <?php
